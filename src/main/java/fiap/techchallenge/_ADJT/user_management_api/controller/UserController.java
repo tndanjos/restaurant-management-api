@@ -1,10 +1,12 @@
 package fiap.techchallenge._ADJT.user_management_api.controller;
 
 import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.response.UserResponseDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,24 +23,27 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody @Valid CreateUserDTO dto) {
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody @Valid CreateUserDTO dto) {
         User user = userService.createUser(dto);
 
-        return ResponseEntity.status(201).body(user);
+        return ResponseEntity.status(201).body(UserResponseDTO.fromEntity(user));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
 
-        return ResponseEntity.ok(user);
+
+        return ResponseEntity.ok(UserResponseDTO.fromEntity(user));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
 
-        return ResponseEntity.ok(users);
+        List<User> users = userService.getAllUsers();
+        List<UserResponseDTO> userResponseDTOs = users.stream().map(UserResponseDTO::fromEntity).toList();
+
+        return ResponseEntity.ok(userResponseDTOs);
     }
 
     @DeleteMapping("/{id}")
