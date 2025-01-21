@@ -46,10 +46,14 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+    public ResponseEntity<Page<UserResponseDTO>> getAllUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
 
-        List<User> users = userService.getAllUsers();
-        List<UserResponseDTO> userResponseDTOs = users.stream().map(UserResponseDTO::fromEntity).toList();
+        Page<User> users = userService.getAllUsers(page, size);
+
+        Page<UserResponseDTO> userResponseDTOs = users.map(UserResponseDTO::fromEntity);
 
         return ResponseEntity.ok(userResponseDTOs);
     }

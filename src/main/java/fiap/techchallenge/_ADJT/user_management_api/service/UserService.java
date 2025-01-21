@@ -4,6 +4,8 @@ import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public Page<User> getAllUsers(int page , int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+
+        return userRepository.findAll(pageRequest);
     }
 
     public void deleteUserById(Long id) {
