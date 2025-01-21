@@ -1,7 +1,7 @@
 package fiap.techchallenge._ADJT.user_management_api.controller;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserRequestDTO;
 import fiap.techchallenge._ADJT.user_management_api.dto.response.UserResponseDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.service.UserService;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -26,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> createUser(@RequestBody @Valid CreateUserDTO dto) {
+    public ResponseEntity<UserResponseDTO> createUser(@RequestBody @Valid CreateUserRequestDTO dto) {
         User user = userService.createUser(dto);
 
         URI uri = ServletUriComponentsBuilder
@@ -60,7 +59,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserDTO dto) {
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDTO dto) {
         User updatedUser = userService.updateUser(id, dto);
 
         return ResponseEntity.ok(UserResponseDTO.fromEntity(updatedUser));

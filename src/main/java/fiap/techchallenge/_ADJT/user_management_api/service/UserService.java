@@ -1,7 +1,7 @@
 package fiap.techchallenge._ADJT.user_management_api.service;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserRequestDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,7 +22,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User createUser(CreateUserDTO dto) {
+    public User createUser(CreateUserRequestDTO dto) {
         if (userRepository.existsByEmail(dto.email())) {
             throw new IllegalArgumentException("The email is already in use.");
         }
@@ -48,7 +48,7 @@ public class UserService {
         return userRepository.findAll(pageRequest);
     }
 
-    public User updateUser(Long id, UpdateUserDTO dto) {
+    public User updateUser(Long id, UpdateUserRequestDTO dto) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
 

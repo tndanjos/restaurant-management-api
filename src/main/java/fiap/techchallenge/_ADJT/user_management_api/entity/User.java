@@ -1,6 +1,6 @@
 package fiap.techchallenge._ADJT.user_management_api.entity;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -29,7 +29,7 @@ public class User {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public User(CreateUserDTO dto) {
+    public User(CreateUserRequestDTO dto) {
             this.name = dto.name();
             this.email = dto.email();
             this.username = dto.username();
