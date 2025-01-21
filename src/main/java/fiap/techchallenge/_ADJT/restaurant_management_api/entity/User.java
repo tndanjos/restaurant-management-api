@@ -1,6 +1,7 @@
 package fiap.techchallenge._ADJT.restaurant_management_api.entity;
 
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.enums.UserType;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -26,6 +27,10 @@ public class User {
     private String username;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserType type;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -34,6 +39,7 @@ public class User {
             this.email = dto.email();
             this.username = dto.username();
             this.password = dto.password();
+            this.type = dto.type();
             this.createdAt = LocalDateTime.now();
             this.updatedAt = LocalDateTime.now();
     }

@@ -3,6 +3,7 @@ package fiap.techchallenge._ADJT.restaurant_management_api.service;
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdateUserRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
+import fiap.techchallenge._ADJT.restaurant_management_api.enums.UserType;
 import fiap.techchallenge._ADJT.restaurant_management_api.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class UserService {
         User user = new User(dto);
         user.setPassword(encryptedPassword);
 
+        if (user.getType() != null) {
+            user.setType(UserType.valueOf(user.getType().name().toUpperCase()));
+        }
+
         return userRepository.save(user);
     }
 
@@ -55,6 +60,10 @@ public class UserService {
         user.setName(dto.name());
         user.setEmail(dto.email());
         user.setUsername(dto.username());
+
+        if (user.getType() != null) {
+            user.setType(UserType.valueOf(user.getType().name().toUpperCase()));
+        }
 
         return userRepository.save(user);
     }
