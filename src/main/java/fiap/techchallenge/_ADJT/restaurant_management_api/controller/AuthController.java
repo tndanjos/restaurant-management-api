@@ -1,7 +1,7 @@
-package fiap.techchallenge._ADJT.user_management_api.controller;
+package fiap.techchallenge._ADJT.restaurant_management_api.controller;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.LoginRequestDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.response.LoginResponseDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.LoginRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.response.LoginResponseDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

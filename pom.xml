@@ -15,9 +15,9 @@
 	</parent>
 
 	<groupId>fiap.techchallenge.7ADJT</groupId>
-	<artifactId>user-management-api</artifactId>
+	<artifactId>restaurant-management-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user-management-api</name>
+	<name>restaurant-management-api</name>
 	<description>Tech Challenge da Fase 1 Pós FIAP 7ADJT</description>
 	<url/>
 

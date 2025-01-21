@@ -1,7 +1,7 @@
-package fiap.techchallenge._ADJT.user_management_api.service;
+package fiap.techchallenge._ADJT.restaurant_management_api.service;
 
-import fiap.techchallenge._ADJT.user_management_api.entity.User;
-import fiap.techchallenge._ADJT.user_management_api.repository.UserRepository;
+import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
+import fiap.techchallenge._ADJT.restaurant_management_api.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

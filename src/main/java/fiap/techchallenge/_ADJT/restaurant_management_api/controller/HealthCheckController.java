@@ -1,4 +1,4 @@
-package fiap.techchallenge._ADJT.user_management_api.controller;
+package fiap.techchallenge._ADJT.restaurant_management_api.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

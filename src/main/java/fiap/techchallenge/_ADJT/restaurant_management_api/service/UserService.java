@@ -1,9 +1,9 @@
-package fiap.techchallenge._ADJT.user_management_api.service;
+package fiap.techchallenge._ADJT.restaurant_management_api.service;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserRequestDTO;
-import fiap.techchallenge._ADJT.user_management_api.entity.User;
-import fiap.techchallenge._ADJT.user_management_api.repository.UserRepository;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
+import fiap.techchallenge._ADJT.restaurant_management_api.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

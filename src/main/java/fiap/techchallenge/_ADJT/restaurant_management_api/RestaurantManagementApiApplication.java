@@ -1,13 +1,13 @@
-package fiap.techchallenge._ADJT.user_management_api;
+package fiap.techchallenge._ADJT.restaurant_management_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserManagementApiApplication {
+public class RestaurantManagementApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserManagementApiApplication.class, args);
+		SpringApplication.run(RestaurantManagementApiApplication.class, args);
 	}
 
 }

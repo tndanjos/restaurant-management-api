@@ -1,4 +1,4 @@
-package fiap.techchallenge._ADJT.user_management_api.dto.request;
+package fiap.techchallenge._ADJT.restaurant_management_api.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

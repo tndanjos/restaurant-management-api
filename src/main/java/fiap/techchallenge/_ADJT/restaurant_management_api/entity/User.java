@@ -1,6 +1,6 @@
-package fiap.techchallenge._ADJT.user_management_api.entity;
+package fiap.techchallenge._ADJT.restaurant_management_api.entity;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;

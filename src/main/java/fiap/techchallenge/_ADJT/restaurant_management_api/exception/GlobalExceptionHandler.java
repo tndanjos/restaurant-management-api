@@ -1,4 +1,4 @@
-package fiap.techchallenge._ADJT.user_management_api.exception;
+package fiap.techchallenge._ADJT.restaurant_management_api.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 

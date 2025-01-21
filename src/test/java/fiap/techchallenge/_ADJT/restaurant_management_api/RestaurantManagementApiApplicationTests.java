@@ -1,10 +1,10 @@
-package fiap.techchallenge._ADJT.user_management_api;
+package fiap.techchallenge._ADJT.restaurant_management_api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserManagementApiApplicationTests {
+class RestaurantManagementApiApplicationTests {
 
 	@Test
 	void contextLoads() {

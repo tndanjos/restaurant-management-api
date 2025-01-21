@@ -1,4 +1,4 @@
-package fiap.techchallenge._ADJT.user_management_api.config;
+package fiap.techchallenge._ADJT.restaurant_management_api.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

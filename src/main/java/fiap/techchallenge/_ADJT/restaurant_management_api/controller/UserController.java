@@ -1,10 +1,10 @@
-package fiap.techchallenge._ADJT.user_management_api.controller;
+package fiap.techchallenge._ADJT.restaurant_management_api.controller;
 
-import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserRequestDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserRequestDTO;
-import fiap.techchallenge._ADJT.user_management_api.dto.response.UserResponseDTO;
-import fiap.techchallenge._ADJT.user_management_api.entity.User;
-import fiap.techchallenge._ADJT.user_management_api.service.UserService;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.response.UserResponseDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
+import fiap.techchallenge._ADJT.restaurant_management_api.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,8 +1,6 @@
-package fiap.techchallenge._ADJT.user_management_api.dto.response;
+package fiap.techchallenge._ADJT.restaurant_management_api.dto.response;
 
-import fiap.techchallenge._ADJT.user_management_api.entity.User;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
 
 public record UserResponseDTO(
         Long id,

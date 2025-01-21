@@ -1,6 +1,6 @@
-package fiap.techchallenge._ADJT.user_management_api.config;
+package fiap.techchallenge._ADJT.restaurant_management_api.config;
 
-import fiap.techchallenge._ADJT.user_management_api.service.CustomUserDetailsService;
+import fiap.techchallenge._ADJT.restaurant_management_api.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
