@@ -1,0 +1,8 @@
+ALTER TABLE users
+    ADD COLUMN street VARCHAR(255),
+    ADD COLUMN neighborhood VARCHAR(255),
+    ADD COLUMN zip_code VARCHAR(20),
+    ADD COLUMN city VARCHAR(100),
+    ADD COLUMN state VARCHAR(100),
+    ADD COLUMN number VARCHAR(20),
+    ADD COLUMN complement VARCHAR(255);

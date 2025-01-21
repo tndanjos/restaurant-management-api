@@ -1,5 +1,6 @@
 package fiap.techchallenge._ADJT.restaurant_management_api.dto.request;
 
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.AddressDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.enums.UserType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,6 +19,8 @@ public record UpdateUserRequestDTO(
 
         @NotNull(message = "The type cannot be null")
         UserType type,
+
+        AddressDTO address,
 
         @NotBlank(message = "The username cannot be blank")
         @Size(min = 4, max = 50, message = "The username must be between 5 and 50 characters")

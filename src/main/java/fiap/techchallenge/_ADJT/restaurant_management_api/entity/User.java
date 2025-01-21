@@ -31,6 +31,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType type;
 
+    @Embedded
+    private Address address;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -40,6 +43,7 @@ public class User {
             this.username = dto.username();
             this.password = dto.password();
             this.type = dto.type();
+            this.address = dto.address() != null ? new Address(dto.address()) : null;
             this.createdAt = LocalDateTime.now();
             this.updatedAt = LocalDateTime.now();
     }
