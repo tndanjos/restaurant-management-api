@@ -1,6 +1,7 @@
 package fiap.techchallenge._ADJT.user_management_api.service;
 
 import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -45,6 +46,17 @@ public class UserService {
         PageRequest pageRequest = PageRequest.of(page, size);
 
         return userRepository.findAll(pageRequest);
+    }
+
+    public User updateUser(Long id, UpdateUserDTO dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+
+        user.setName(dto.name());
+        user.setEmail(dto.email());
+        user.setUsername(dto.username());
+
+        return userRepository.save(user);
     }
 
     public void deleteUserById(Long id) {

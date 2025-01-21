@@ -4,6 +4,7 @@ import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Table(name = "users")
@@ -35,6 +36,15 @@ public class User {
             this.password = dto.password();
             this.createdAt = LocalDateTime.now();
             this.updatedAt = LocalDateTime.now();
+    }
+
+    public String getFormattedUpdatedAt() {
+        if (this.updatedAt != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            return this.updatedAt.format(formatter);
+        }
+        return null;
     }
 
     @PrePersist

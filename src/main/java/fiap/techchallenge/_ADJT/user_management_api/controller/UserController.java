@@ -1,6 +1,7 @@
 package fiap.techchallenge._ADJT.user_management_api.controller;
 
 import fiap.techchallenge._ADJT.user_management_api.dto.request.CreateUserDTO;
+import fiap.techchallenge._ADJT.user_management_api.dto.request.UpdateUserDTO;
 import fiap.techchallenge._ADJT.user_management_api.dto.response.UserResponseDTO;
 import fiap.techchallenge._ADJT.user_management_api.entity.User;
 import fiap.techchallenge._ADJT.user_management_api.service.UserService;
@@ -56,6 +57,13 @@ public class UserController {
         Page<UserResponseDTO> userResponseDTOs = users.map(UserResponseDTO::fromEntity);
 
         return ResponseEntity.ok(userResponseDTOs);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody UpdateUserDTO dto) {
+        User updatedUser = userService.updateUser(id, dto);
+
+        return ResponseEntity.ok(UserResponseDTO.fromEntity(updatedUser));
     }
 
     @DeleteMapping("/{id}")
