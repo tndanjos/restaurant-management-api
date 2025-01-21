@@ -1,6 +1,7 @@
 package fiap.techchallenge._ADJT.restaurant_management_api.service;
 
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdatePasswordRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdateUserRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
 import fiap.techchallenge._ADJT.restaurant_management_api.enums.UserType;
@@ -73,5 +74,17 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
 
         userRepository.delete(user);
+    }
+
+    public void updatePassword(Long id, UpdatePasswordRequestDTO dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+
+        if (!passwordEncoder.matches(dto.oldPassword(), user.getPassword())) {
+            throw new IllegalArgumentException("Old password is incorrect");
+        }
+
+        user.setPassword(passwordEncoder.encode(dto.newPassword()));
+        userRepository.save(user);
     }
 }

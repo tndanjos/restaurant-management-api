@@ -27,6 +27,6 @@ public record CreateUserRequestDTO(
         String username,
 
         @NotBlank(message = "The password cannot be blank")
-        @Size(min = 6, max = 255, message = "The password must be between 6 and 255 characters")
+        @Size(min = 8, max = 255, message = "The password must be between 8 and 255 characters")
         String password
 ) { }

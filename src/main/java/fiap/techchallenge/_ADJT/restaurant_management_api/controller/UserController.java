@@ -1,6 +1,7 @@
 package fiap.techchallenge._ADJT.restaurant_management_api.controller;
 
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.CreateUserRequestDTO;
+import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdatePasswordRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.request.UpdateUserRequestDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.dto.response.UserResponseDTO;
 import fiap.techchallenge._ADJT.restaurant_management_api.entity.User;
@@ -70,5 +71,12 @@ public class UserController {
         userService.deleteUserById(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/password")
+    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody @Valid UpdatePasswordRequestDTO dto) {
+        userService.updatePassword(id, dto);
+
+        return ResponseEntity.ok("Password updated successfully");
     }
 }
