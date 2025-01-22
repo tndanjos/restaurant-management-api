@@ -2,6 +2,50 @@
 
 ## Restaurant Management API
 
+### Arquitetura da Aplicação 
+
+```
+src/main/java/fiap/techchallenge/restaurant-management-api/
+├── entity/              # Classes representando tabelas do db
+├── dto/                 # Objetos de Transferência de Dados (DTO)
+│   ├── request/         # DTOs para dados de entrada (requests)
+│   └── response/        # DTOs para dados de saída (responses)
+├── enums/               # Definições de tipos enumerados
+├── controller/          # Endpoints REST
+├── service/             # Lógica de negócios
+├── repository/          # Interfaces JPA para persistência
+├── config/              # Configurações do projeto
+├── exception/           # Classes para tratamento de exceções
+```
+
+```mermaid
+graph TD
+    A[restaurant-management-api] --> B[entity]
+    A --> C[dto]
+    C --> D[request]
+    C --> E[response]
+    A --> F[enums]
+    A --> G[controller]
+    A --> H[service]
+    A --> I[repository]
+    A --> J[config]
+    A --> K[exception]
+
+    B:::package
+    C:::package
+    D:::subPackage
+    E:::subPackage
+    F:::package
+    G:::package
+    H:::package
+    I:::package
+    J:::package
+    K:::package
+
+classDef package fill:#4169E1,stroke:#000,stroke-width:1px;
+classDef subPackage fill:#6495ED,stroke:#000,stroke-width:1px;
+```
+
 ### Rodando a aplicação
 
 #### Rodando o Docker para construção dos containers
