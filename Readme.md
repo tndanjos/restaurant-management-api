@@ -4,7 +4,7 @@
 
 ### Rodando a aplicação
 
-#### Rodando o Docker para construção do container
+#### Rodando o Docker para construção dos containers
 ```bash
 docker-compose build
 ````
