@@ -17,19 +17,21 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MessageService messageService;
 
     @Autowired
-    public UserService (UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, MessageService messageService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.messageService = messageService;
     }
 
     public User createUser(CreateUserRequest dto) {
         if (userRepository.existsByEmail(dto.email())) {
-            throw new IllegalArgumentException("The email is already in use.");
+            throw new IllegalArgumentException(messageService.getMessage("email.already.in.use"));
         }
         if (userRepository.existsByUsername(dto.username())) {
-            throw new IllegalArgumentException("The username is already in use.");
+            throw new IllegalArgumentException(messageService.getMessage("username.already.in.use"));
         }
 
         String encryptedPassword = passwordEncoder.encode(dto.password());
@@ -45,18 +47,17 @@ public class UserService {
 
     public User getUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
     }
 
-    public Page<User> getAllUsers(int page , int size) {
+    public Page<User> getAllUsers(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
-
         return userRepository.findAll(pageRequest);
     }
 
     public User updateUser(Long id, UpdateUserRequest dto) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
 
         user.setName(dto.name());
         user.setEmail(dto.email());
@@ -71,17 +72,17 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
 
         userRepository.delete(user);
     }
 
     public void updatePassword(Long id, UpdatePasswordRequest dto) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
 
         if (!passwordEncoder.matches(dto.oldPassword(), user.getPassword())) {
-            throw new IllegalArgumentException("Old password is incorrect");
+            throw new IllegalArgumentException(messageService.getMessage("old.password.incorrect"));
         }
 
         user.setPassword(passwordEncoder.encode(dto.newPassword()));
