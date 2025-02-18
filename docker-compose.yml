@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  restaurant-management-api:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,15 +8,15 @@ services:
       - "8080:8080"
     environment:
       SPRING_APPLICATION_NAME: restaurant-management-api
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql-restaurant-management-api:5432/restaurant_management_api_development
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/restaurant_management_api_development
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
     depends_on:
-      postgresql-restaurant-management-api:
+      postgresql:
         condition: service_healthy
     restart: unless-stopped
 
-  postgresql-restaurant-management-api:
+  postgresql:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: postgres
