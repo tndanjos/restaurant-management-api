@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.entity;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequest;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.enums.UserType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,7 +42,7 @@ public class User implements UserDetails {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public User(CreateUserRequest dto) {
+    public User(CreateUserRequestDto dto) {
             this.name = dto.name();
             this.email = dto.email();
             this.username = dto.username();

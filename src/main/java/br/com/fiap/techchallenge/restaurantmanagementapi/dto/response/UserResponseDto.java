@@ -1,19 +1,19 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.dto.response;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.Address;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.entity.User;
 import br.com.fiap.techchallenge.restaurantmanagementapi.enums.UserType;
 
-public record UserResponse(
+public record UserResponseDto(
         Long id,
         String name,
         String email,
         String username,
         UserType type,
-        Address address,
+        CreateAddressRequestDto address,
         String updatedAt) {
-    public static UserResponse fromEntity(User user) {
-        Address address = new Address(
+    public static UserResponseDto fromEntity(User user) {
+        CreateAddressRequestDto address = new CreateAddressRequestDto(
                 user.getAddress().getStreet(),
                 user.getAddress().getNeighborhood(),
                 user.getAddress().getZipCode(),
@@ -23,7 +23,7 @@ public record UserResponse(
                 user.getAddress().getComplement()
         );
 
-        return new UserResponse(
+        return new UserResponseDto(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),

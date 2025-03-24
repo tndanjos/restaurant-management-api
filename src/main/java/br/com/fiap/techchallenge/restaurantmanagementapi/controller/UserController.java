@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.controller;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdatePasswordRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdateUserRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.response.UserResponse;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdatePasswordRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdateUserRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.response.UserResponseDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.entity.User;
 import br.com.fiap.techchallenge.restaurantmanagementapi.service.UserService;
 import jakarta.validation.Valid;
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid CreateUserRequest dto) {
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody @Valid CreateUserRequestDto dto) {
         User user = userService.createUser(dto);
 
         URI uri = ServletUriComponentsBuilder
@@ -35,35 +35,34 @@ public class UserController {
                 .buildAndExpand(user.getId())
                 .toUri();
 
-        return ResponseEntity.created(uri).body(UserResponse.fromEntity(user));
+        return ResponseEntity.created(uri).body(UserResponseDto.fromEntity(user));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
 
-
-        return ResponseEntity.ok(UserResponse.fromEntity(user));
+        return ResponseEntity.ok(UserResponseDto.fromEntity(user));
     }
 
     @GetMapping
-    public ResponseEntity<Page<UserResponse>> getAllUsers(
+    public ResponseEntity<Page<UserResponseDto>> getAllUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
 
         Page<User> users = userService.getAllUsers(page, size);
 
-        Page<UserResponse> userResponseDTOs = users.map(UserResponse::fromEntity);
+        Page<UserResponseDto> userResponseDTOs = users.map(UserResponseDto::fromEntity);
 
         return ResponseEntity.ok(userResponseDTOs);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequest dto) {
+    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDto dto) {
         User updatedUser = userService.updateUser(id, dto);
 
-        return ResponseEntity.ok(UserResponse.fromEntity(updatedUser));
+        return ResponseEntity.ok(UserResponseDto.fromEntity(updatedUser));
     }
 
     @DeleteMapping("/{id}")
@@ -74,7 +73,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}/password")
-    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody @Valid UpdatePasswordRequest dto) {
+    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody @Valid UpdatePasswordRequestDto dto) {
         userService.updatePassword(id, dto);
 
         return ResponseEntity.ok("Password updated successfully");

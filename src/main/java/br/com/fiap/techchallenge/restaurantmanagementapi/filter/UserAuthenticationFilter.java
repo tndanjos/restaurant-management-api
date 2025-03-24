@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.restaurantmanagementapi.filters;
+package br.com.fiap.techchallenge.restaurantmanagementapi.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

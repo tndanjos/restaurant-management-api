@@ -1,8 +1,8 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.service;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdatePasswordRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdateUserRequest;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdatePasswordRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdateUserRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.entity.User;
 import br.com.fiap.techchallenge.restaurantmanagementapi.enums.UserType;
 import br.com.fiap.techchallenge.restaurantmanagementapi.repository.UserRepository;
@@ -26,7 +26,7 @@ public class UserService {
         this.messageService = messageService;
     }
 
-    public User createUser(CreateUserRequest dto) {
+    public User createUser(CreateUserRequestDto dto) {
         if (userRepository.existsByEmail(dto.email())) {
             throw new IllegalArgumentException(messageService.getMessage("email.already.in.use"));
         }
@@ -55,7 +55,7 @@ public class UserService {
         return userRepository.findAll(pageRequest);
     }
 
-    public User updateUser(Long id, UpdateUserRequest dto) {
+    public User updateUser(Long id, UpdateUserRequestDto dto) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
 
@@ -77,7 +77,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public void updatePassword(Long id, UpdatePasswordRequest dto) {
+    public void updatePassword(Long id, UpdatePasswordRequestDto dto) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
 

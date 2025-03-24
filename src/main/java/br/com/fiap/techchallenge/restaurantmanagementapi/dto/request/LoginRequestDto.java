@@ -2,7 +2,7 @@ package br.com.fiap.techchallenge.restaurantmanagementapi.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record LoginRequest(
+public record LoginRequestDto(
         @NotBlank(message = "Username is required")
         String username,
 

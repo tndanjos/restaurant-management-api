@@ -1,13 +1,12 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.dto.request;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.Address;
 import br.com.fiap.techchallenge.restaurantmanagementapi.enums.UserType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public record CreateUserRequest(
+public record CreateUserRequestDto(
         @NotBlank(message = "The name cannot be blank")
         @Size(min = 2, max = 100, message = "The name must be between 2 and 100 characters")
         String name,
@@ -20,7 +19,7 @@ public record CreateUserRequest(
         @NotNull(message = "The type cannot be null")
         UserType type,
 
-        Address address,
+        CreateAddressRequestDto address,
 
         @NotBlank(message = "The username cannot be blank")
         @Size(min = 4, max = 50, message = "The username must be between 5 and 50 characters")

@@ -3,7 +3,7 @@ package br.com.fiap.techchallenge.restaurantmanagementapi.dto.request;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record UpdatePasswordRequest(
+public record UpdatePasswordRequestDto(
         @NotBlank(message = "Old password is required")
         String oldPassword,
 

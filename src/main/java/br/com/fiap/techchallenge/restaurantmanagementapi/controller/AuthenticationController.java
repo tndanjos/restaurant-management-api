@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.controller;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.LoginRequest;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.response.LoginResponse;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.LoginRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.response.LoginResponseDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.entity.User;
 import br.com.fiap.techchallenge.restaurantmanagementapi.service.JwtTokenService;
 import jakarta.validation.Valid;
@@ -22,13 +22,13 @@ public class AuthenticationController {
     private JwtTokenService jwtTokenService;
 
     @PostMapping
-    public ResponseEntity login(@RequestBody @Valid LoginRequest dto){
+    public ResponseEntity login(@RequestBody @Valid LoginRequestDto dto){
 
         var authenticationToken = new UsernamePasswordAuthenticationToken(dto.username(), dto.password());
         var authentication = authenticationManager.authenticate(authenticationToken);
 
         var jwtToken = jwtTokenService.generateToken((User) authentication.getPrincipal());
 
-        return ResponseEntity.ok(new LoginResponse(jwtToken));
+        return ResponseEntity.ok(new LoginResponseDto(jwtToken));
     }
 }

@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.config;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.filters.UserAuthenticationFilter;
+import br.com.fiap.techchallenge.restaurantmanagementapi.filter.UserAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
