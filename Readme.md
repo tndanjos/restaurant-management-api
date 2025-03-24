@@ -51,7 +51,7 @@ classDef subPackage fill:#6495ED,stroke:#000,stroke-width:1px;
 #### Rodando o Docker para construção dos containers
 ```bash
 docker-compose build
-````
+```
 
 #### Rodando a aplicação com docker
 ```bash

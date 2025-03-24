@@ -1,6 +1,3 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.dto.response;
 
-public record LoginResponse(
-        String message,
-        String username
-) {}
+public record LoginResponse(String jwtToken) {}
