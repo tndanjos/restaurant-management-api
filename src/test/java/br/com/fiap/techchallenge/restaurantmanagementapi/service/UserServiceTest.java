@@ -20,7 +20,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class UserServiceTest {
+class UserServiceTest {
+
     @InjectMocks
     private UserService userService;
 

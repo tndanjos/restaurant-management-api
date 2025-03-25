@@ -1,5 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.service;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -13,6 +14,7 @@ import java.time.ZoneOffset;
 
 @Service
 public class JwtTokenService {
+
     @Value("$jwt.token.secret.key")
     private String secretKey;
 
@@ -26,7 +28,7 @@ public class JwtTokenService {
                     .withExpiresAt(expirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception){
-            throw new RuntimeException("Error generating jwt token", exception);
+            throw new BadCredentialsException("Error generating jwt token", exception);
         }    }
 
     public String getSubject(String jwtToken) {
@@ -38,7 +40,7 @@ public class JwtTokenService {
                     .verify(jwtToken)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            throw new RuntimeException("Invalid or expired JWT token!");
+            throw new BadCredentialsException("Invalid or expired JWT token!");
         }
     }
 

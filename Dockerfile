@@ -27,4 +27,4 @@ USER appuser
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "target/restaurant-management-api-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/target/restaurant-management-api-0.0.1-SNAPSHOT.jar"]

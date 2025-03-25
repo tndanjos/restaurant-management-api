@@ -5,20 +5,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AddressTest {
+class AddressTest {
 
     private Address address;
 
     @BeforeEach
     void setup() {
         CreateAddressRequestDto dto = new CreateAddressRequestDto(
-            "Rua Augusta",
-            "Consolação",
-            "01310-100",
-            "São Paulo",
-            "SP",
-            "123",
-            "Fundos"
+                "Rua Augusta",
+                "Consolação",
+                "01310-100",
+                "São Paulo",
+                "SP",
+                "123",
+                "Fundos"
         );
 
         address = new Address(dto);

@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.http.HttpStatus.*;
 
 class GlobalExceptionHandlerTest {
+
     private final GlobalExceptionHandler handler = new GlobalExceptionHandler();
 
     @Test
