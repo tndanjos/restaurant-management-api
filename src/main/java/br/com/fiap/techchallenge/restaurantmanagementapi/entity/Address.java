@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.entity;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,7 @@ public class Address {
     private String number;
     private String complement;
 
-    public Address(CreateAddressRequestDto dto) {
+    public Address(AddressRequestDto dto) {
         this.street = dto.street();
         this.neighborhood = dto.neighborhood();
         this.zipCode = dto.zipCode();

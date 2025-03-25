@@ -5,13 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalTime;
 
-public record CreateRestaurantRequestDto(
+public record RestaurantRequestDto(
         @NotBlank(message = "The name cannot be blank")
         @Size(min = 2, max = 100, message = "The name must be between 2 and 100 characters")
         String name,
 
         String cooking,
-        CreateAddressRequestDto address,
+        AddressRequestDto address,
         LocalTime openingAt,
 
         @NotNull(message = "User ID must be provided")

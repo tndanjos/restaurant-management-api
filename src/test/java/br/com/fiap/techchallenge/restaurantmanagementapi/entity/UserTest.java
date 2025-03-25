@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.entity;
 
 import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.enums.UserType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ class UserTest {
                 "João Silva",
                 "joao.silva@gmail.com",
                 UserType.OWNER,
-                new CreateAddressRequestDto(
+                new AddressRequestDto(
                         "Rua Augusta",
                         "Consolação",
                         "01310-100",

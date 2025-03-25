@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.controller;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdatePasswordRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.UpdateUserRequestDto;
@@ -52,7 +52,7 @@ class UserControllerTest {
                 "João Silva",
                 "joao.silva@gmail.com",
                 UserType.OWNER,
-                new CreateAddressRequestDto(
+                new AddressRequestDto(
                         "Rua Augusta",
                         "Consolação",
                         "01310-100",
@@ -122,7 +122,7 @@ class UserControllerTest {
                 "Maria Silva",
                 "maria.silva@gmail.com",
                 UserType.CUSTOMER,
-                new CreateAddressRequestDto(
+                new AddressRequestDto(
                         "Avenida Paulista",
                         "Centro",
                         "01100-310",
@@ -158,7 +158,7 @@ class UserControllerTest {
                 "test",
                 "test@test.com",
                 UserType.CUSTOMER,
-                new CreateAddressRequestDto(
+                new AddressRequestDto(
                         "Rua Test",
                         "Test",
                         "00000-000",

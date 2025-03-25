@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.dto.request;
 
-public record CreateAddressRequestDto(
+public record AddressRequestDto(
         String street,
         String neighborhood,
         String zipCode,

@@ -47,8 +47,7 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
+        return loadUser(id);
     }
 
     public Page<User> getAllUsers(int page, int size) {
@@ -57,8 +56,7 @@ public class UserService {
     }
 
     public User updateUser(Long id, UpdateUserRequestDto dto) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
+        User user = loadUser(id);
 
         user.setName(dto.name());
         user.setEmail(dto.email());
@@ -72,15 +70,13 @@ public class UserService {
     }
 
     public void deleteUserById(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
+        User user = loadUser(id);
 
         userRepository.delete(user);
     }
 
     public void updatePassword(Long id, UpdatePasswordRequestDto dto) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", id)));
+        User user = loadUser(id);
 
         if (!passwordEncoder.matches(dto.oldPassword(), user.getPassword())) {
             throw new IllegalArgumentException(messageService.getMessage("old.password.incorrect"));
@@ -88,5 +84,10 @@ public class UserService {
 
         user.setPassword(passwordEncoder.encode(dto.newPassword()));
         userRepository.save(user);
+    }
+
+    private User loadUser(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException(messageService.getMessage("user.not.found", userId)));
     }
 }

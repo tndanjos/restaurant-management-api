@@ -19,7 +19,7 @@ public record CreateUserRequestDto(
         @NotNull(message = "The type cannot be null")
         UserType type,
 
-        CreateAddressRequestDto address,
+        AddressRequestDto address,
 
         @NotBlank(message = "The username cannot be blank")
         @Size(min = 4, max = 50, message = "The username must be between 5 and 50 characters")

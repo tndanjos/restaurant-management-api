@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.entity;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateRestaurantRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.RestaurantRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,7 +35,7 @@ public class Restaurant {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Restaurant(CreateRestaurantRequestDto dto, User user) {
+    public Restaurant(RestaurantRequestDto dto, User user) {
         this.name = dto.name();
         this.cooking = dto.cooking();
         this.address = dto.address() != null ? new Address(dto.address()) : null;

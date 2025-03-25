@@ -1,26 +1,24 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.dto.response;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.entity.Restaurant;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalTime;
 
 public record RestaurantResponseDto(
         Long id,
         String name,
         String cooking,
-        CreateAddressRequestDto address,
+        AddressRequestDto address,
 
         @JsonFormat(pattern = "HH:mm")
         LocalTime openingAt,
 
-        Long user_id
+        UserResponseDto owner
 ) {
 
     public static RestaurantResponseDto fromEntity(Restaurant restaurant) {
-        CreateAddressRequestDto address = new CreateAddressRequestDto(
+        AddressRequestDto address = new AddressRequestDto(
                 restaurant.getAddress().getStreet(),
                 restaurant.getAddress().getNeighborhood(),
                 restaurant.getAddress().getZipCode(),
@@ -36,7 +34,7 @@ public record RestaurantResponseDto(
                 restaurant.getCooking(),
                 address,
                 restaurant.getOpeningAt(),
-                restaurant.getUser().getId()
+                UserResponseDto.fromEntity(restaurant.getUser())
         );
     }
 }

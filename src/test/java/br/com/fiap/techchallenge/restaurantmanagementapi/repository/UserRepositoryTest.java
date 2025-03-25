@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.repository;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateUserRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ class UserRepositoryTest {
                 "João Silva",
                 "joao.silva@gmail.com",
                 UserType.OWNER,
-                new CreateAddressRequestDto(
+                new AddressRequestDto(
                         "Rua Augusta",
                         "Consolação",
                         "01310-100",

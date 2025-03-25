@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.restaurantmanagementapi.entity;
 
-import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.CreateAddressRequestDto;
+import br.com.fiap.techchallenge.restaurantmanagementapi.dto.request.AddressRequestDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,7 +11,7 @@ class AddressTest {
 
     @BeforeEach
     void setup() {
-        CreateAddressRequestDto dto = new CreateAddressRequestDto(
+        AddressRequestDto dto = new AddressRequestDto(
                 "Rua Augusta",
                 "Consolação",
                 "01310-100",
