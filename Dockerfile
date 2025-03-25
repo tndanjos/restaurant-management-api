@@ -13,15 +13,18 @@ COPY src src
 RUN ./mvnw clean package -DskipTests
 
 # Runtime
-FROM eclipse-temurin:23-jre-alpine
+FROM eclipse-temurin:23-jdk-alpine
 
 WORKDIR /app
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
+RUN apk add --no-cache bash git curl
 
-COPY --from=build /app/target/restaurant-management-api-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app /app
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN chown -R appuser:appgroup /app
+USER appuser
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "target/restaurant-management-api-0.0.1-SNAPSHOT.jar"]

@@ -25,9 +25,6 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var jwtToken = getToken(request);
 
-        System.out.println("Hello World!");
-        System.out.println(jwtToken);
-
         if (jwtToken != null) {
             var subject = jwtTokenService.getSubject(jwtToken);
             var user = repository.findByUsername(subject);

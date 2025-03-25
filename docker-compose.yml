@@ -1,4 +1,5 @@
-version: '3.9'
+version: "3.9"
+
 services:
   api:
     build:
@@ -9,8 +10,10 @@ services:
     environment:
       SPRING_APPLICATION_NAME: restaurant-management-api
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/restaurant_management_api_development
+      SPRING_DATASOURCE_TEST_URL: jdbc:postgresql://postgresql:5432/restaurant_management_api_test
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_PROFILES_ACTIVE: development
     depends_on:
       postgresql:
         condition: service_healthy
@@ -21,11 +24,12 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: restaurant_management_api_development
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-multiple-dbs.sh:/docker-entrypoint-initdb.d/init-multiple-dbs.sh:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
