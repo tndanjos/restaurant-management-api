@@ -1,17 +1,610 @@
 {
 	"info": {
-		"_postman_id": "b585fdda-d943-43e6-97c0-f8dc92aee899",
+		"_postman_id": "006675a4-abc2-42c4-afa9-5c8986149d74",
 		"name": "RestaurantManagementApi-7ADJT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "16425043"
 	},
 	"item": [
 		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTY4Mzl9.fR88IVIijhKuOOXYww7Re3A3HajGf2x8cGNtArKnVgw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test\",\n\t\"email\": \"test2@test.com\",\n    \"username\": \"test2\",\n    \"type\": \"Owner\",\n\t\"password\": \"12345678\",\n\t\"address\": {\n\t\t\"street\": \"Rua Emília Brasão\",\n\t\t\"neighborhood\": \"Conjunto Residencial José Bonifácio\", \n\t\t\"zipCode\": \"08250680\",\n\t\t\"city\": \"Sao Paulo\",\n\t\t\"state\": \"SP\",\n\t\t\"number\": \"450\",\n\t\t\"complement\": \"complement\"\n\t}    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"TestUpdate\",\n\t\"email\": \"test@test.comUpdate\",\n\t\"username\": \"testUpdate\",\n\t\"address\": {\n\t\t\"street\": \"Rua Emília Brasão\",\n\t\t\"neighborhood\": \"Conjunto Residencial José Bonifácio\", \n\t\t\"zipCode\": \"08250680\",\n\t\t\"city\": \"Sao Paulo\",\n\t\t\"state\": \"SP\",\n\t\t\"number\": \"4500\",\n\t\t\"complement\": \"complement\"\n\t}    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NDI2NzB9.rgHQBer_w_3WBYpJyAjJOwf4U1scO9noWencKFety3c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"oldPassword\": \"admin123\",\n\t\"newPassword\": \"87654321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/1/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTU5MTN9.GwIMOpN9u4yT-LyZ8dg5GbN3JALILSP_2VOGYLMCuHE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTU5MTN9.GwIMOpN9u4yT-LyZ8dg5GbN3JALILSP_2VOGYLMCuHE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTE0MDd9.pYhDCAH0UHp946xF2NXMe847a2wEGNKPJm24iG0Z2nE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users?page=0&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "Create Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Cantina da Vila Unidade 2\",\n  \"cooking\": \"Italiana\",\n  \"address\": {\n    \"street\": \"Rua das Flores\",\n    \"neighborhood\": \"Centro\",\n    \"zipCode\": \"12345-678\",\n    \"city\": \"São Paulo\",\n    \"state\": \"SP\",\n    \"number\": \"123\",\n    \"complement\": \"Próximo à praça central\"\n  },\n  \"openingAt\": \"11:30\",\n  \"userId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurants?page=0&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTU5MTN9.GwIMOpN9u4yT-LyZ8dg5GbN3JALILSP_2VOGYLMCuHE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurants/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTYzMjd9.7BA9xf5E7StKMO6_craobK8VMKzR-SVHHaxe1JNzXBw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test\",\n  \"cooking\": \"Test\",\n  \"address\": {\n    \"street\": \"Test\",\n    \"neighborhood\": \"Test\",\n    \"zipCode\": \"987-65432\",\n    \"city\": \"São Paulo\",\n    \"state\": \"SP\",\n    \"number\": \"12356\",\n    \"complement\": \"Test\"\n  },\n  \"openingAt\": \"06:00\",\n  \"userId\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurants/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NTU5MTN9.GwIMOpN9u4yT-LyZ8dg5GbN3JALILSP_2VOGYLMCuHE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurants/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MenuItem",
+			"item": [
+				{
+					"name": "Create Menu Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Macarrão Carbonara\",\n  \"description\": \"Culinária Italiana\",\n  \"price\": 49.90,\n  \"photoUrl\": \"https://img.com/carbonara.jpg\",\n  \"dineIn\": true,\n  \"restaurantId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/menu-items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Menu Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/menu-items?page=0&size=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu-items"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Menu Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/menu-items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu-items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Menu Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Macarrão ao Molho Alfredo\",\n  \"description\": \"Culinária Italiana\",\n  \"price\": 49.90,\n  \"photoUrl\": \"https://img.com/alfredo.jpg\",\n  \"dineIn\": true,\n  \"restaurantId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/menu-items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu-items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Menu Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI5MDN9.9XvXjBEXmF_uawYe-J-0buEh62zJXSH6LdiBV-C2E8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/menu-items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu-items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Health Check",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {}
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20uZmlhcC50ZWNoY2hhbGxlbmdlLnJlc3RhdXJhbnRtYW5hZ2VtZW50YXBpIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NDI5NzI1MTJ9.5lsdHIZjvBhCP73jTqpU-ZaYowWrFS_vtb7ai2mL4IA",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -29,13 +622,16 @@
 			"response": []
 		},
 		{
-			"name": "Create User",
+			"name": "Login",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Test\",\n\t\"email\": \"test@test.com\",\n    \"username\": \"test\",\n    \"type\": \"Customer\",\n\t\"password\": \"12345678\",\n\t\"address\": {\n\t\t\"street\": \"Rua Emília Brasão\",\n\t\t\"neighborhood\": \"Conjunto Residencial José Bonifácio\", \n\t\t\"zipCode\": \"08250680\",\n\t\t\"city\": \"Sao Paulo\",\n\t\t\"state\": \"SP\",\n\t\t\"number\": \"450\",\n\t\t\"complement\": \"complement\"\n\t}    \n}",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"87654321\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,247 +639,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users",
+					"raw": "http://localhost:8080/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Auth User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\": \"test\",\n\t\"password\": \"12345678\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/auth/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"auth",
 						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update User",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"TestUpdate\",\n\t\"email\": \"test@test.comUpdate\",\n\t\"username\": \"testUpdate\",\n\t\"address\": {\n\t\t\"street\": \"Rua Emília Brasão\",\n\t\t\"neighborhood\": \"Conjunto Residencial José Bonifácio\", \n\t\t\"zipCode\": \"08250680\",\n\t\t\"city\": \"Sao Paulo\",\n\t\t\"state\": \"SP\",\n\t\t\"number\": \"4500\",\n\t\t\"complement\": \"complement\"\n\t}    \n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/users/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update User Password",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"oldPassword\": \"12345678\",\n\t\"newPassword\": \"87654321\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/users/1/password",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users",
-						"1",
-						"password"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show User",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/users/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/users/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Users",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{username}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/users?page=0&size=5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "0"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						}
 					]
 				}
 			},
